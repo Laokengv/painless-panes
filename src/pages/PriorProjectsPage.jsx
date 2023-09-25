@@ -14,6 +14,8 @@ export default function PriorProjectsPage() {
    dispatch(actions.getAllWindows({ project_id: userProjects.user_id }));
   }, []);
 
+// zipcode and date need to be added 
+
   return (
     <>
       <FormPageHeader text="My Projects" />
