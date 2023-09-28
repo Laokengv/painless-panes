@@ -6,6 +6,7 @@ import FormPageInput from "../components/FormPageInput";
 import { setCurrentWindowId } from "../store/reducers/window.reducer";
 
 export default function FormPageConfirmation() {
+  const [submissionDate, setSubmissionDate] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const windows = useSelector((store) => store.allWindows);
@@ -23,6 +24,11 @@ export default function FormPageConfirmation() {
   const sendConfirmationEmail = () => {
     // Send the confirmation email;
     dispatch(actions.sendConfirmationEmail());
+    // Get the current date and time
+    const currentDate = new Date();
+    // Update the submissionDate state with the current date and time 
+    setSubmissionDate(currentDate);
+
     navigate("/form/6")
   };
   return (
@@ -62,6 +68,9 @@ export default function FormPageConfirmation() {
         <div className="card-body">
           <div className="card-actions justify-center">
             <button className="btn btn-primary" onClick={sendConfirmationEmail}>Submit</button>
+            {submissionDate && (
+              <p>Submission Date: {submissionDate.toLocaleString()}</p>
+            )}
           </div>
         </div>
       </div>

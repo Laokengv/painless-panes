@@ -1,20 +1,20 @@
-import {useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import FormPageHeader from "../components/FormPageHeader";
-import actions from "../store/actions"
+import actions from "../store/actions";
 
 export default function PriorProjectsPage() {
   const userProjects = useSelector((store) => store.projects);
   const projectWindows = useSelector((store) => store.allWindows);
   console.log(projectWindows);
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-   dispatch(actions.getAllProjects());
-   dispatch(actions.getAllWindows({ project_id: userProjects.user_id }));
+    dispatch(actions.getAllProjects());
+    dispatch(actions.getAllWindows({ project_id: userProjects.user_id }));
   }, []);
 
-// zipcode and date need to be added 
+  // add zipcode and date
 
   return (
     <>
@@ -29,6 +29,12 @@ export default function PriorProjectsPage() {
               <p>{project.height}</p>
               <p>{project.width}</p>
               <p>{project.desired_frame_id}</p>
+              {project.submissionDate && (
+                <p>
+                  Submission Date:
+                  {new Date(project.submissionDate).toLocaleString()}
+                </p>
+              )}
             </div>
           </div>;
         })}
