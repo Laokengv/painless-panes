@@ -98,7 +98,7 @@ export function* updateWindowDimensionsSaga(action) {
         width: imageWidth,
       }
     );
-    console.log("Updated window dimensions:", heightResponse, widthResponse);
+    // console.log("Updated window dimensions:", heightResponse, widthResponse);
   } catch (error) {
     console.error("Failed to update window dimensions:", error);
   }

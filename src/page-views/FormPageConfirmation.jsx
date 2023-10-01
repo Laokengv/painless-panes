@@ -69,7 +69,7 @@ export default function FormPageConfirmation() {
           <div className="card-actions justify-center">
             <button className="btn btn-primary" onClick={sendConfirmationEmail}>Submit</button>
             {submissionDate && (
-              <p>Submission Date: {submissionDate.toLocaleString()}</p>
+              <p>{submissionDate.toLocaleString()}</p>
             )}
           </div>
         </div>
